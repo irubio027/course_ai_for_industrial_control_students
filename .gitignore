@@ -176,3 +176,8 @@ outs/project_2627/loss_plot.png
 outs/project_2627/per_class_metrics.png
 outs/project_2627/test_classification_report.csv
 outs/project_2627/test_metrics.json
+
+# RL notebooks generated figures
+figures_cartpole/
+figures_qlearning/
+figures_lunar/
