@@ -1,162 +1,179 @@
-# Q-Learning Grid Robot Navigation Tutorial - Evaluation Questionnaire
+# Q-learning: robot en una rejilla 2D (n15) - Cuestionario de evaluación
 
 - **Grupo:** ________________________________
 - **Nombres:** ________________________________
 - **Uso de IA: no / sí, para…** ________________________________
 
-Criterio de corrección:se valora sobre todo que entendáis los conceptos y los expliquéis con vuestras palabras y vuestros resultados.
+Criterio de corrección: se valora sobre todo que entendáis los conceptos y los expliquéis con vuestras palabras y vuestros resultados.
 
-Entrega el cuestionario en formato `.md`, no PDF.
+Entrega el cuestionario en formato `.md`, no PDF. Cuando una pregunta pida cifras, cópialas de **vuestra** ejecución (y, si habéis cambiado algún parámetro, indicad cuál).
 
-## Student Information
-- **Date**: ________________________________
-- **Course**: Applications of AI for Industrial Control
-- **Tutorial**: Q-Learning for 2D Grid Robot Navigation
+## Información
+- **Fecha**: ________________________________
+- **Asignatura**: Aplicaciones de la IA para Control Industrial
+- **Notebook**: n15 - Q-learning: un robot que aprende a moverse por una rejilla 2D
 
 ---
 
-## Section 1: Basic Concepts
+## Sección 1: Conceptos básicos
 
-### 1.1 Environment Understanding
+### 1.1 El entorno
 
-**Question 1**: What is the main goal of the robot in the grid world environment?
-- a) Reach the goal position while avoiding traps
-- b) Visit every cell in the grid exactly once
-- c) Reach the goal position in the minimum number of steps
-- d) Stay in the start position and avoid moving
+**Pregunta 1**: ¿Cuál es el objetivo principal del robot en la rejilla? Elegid una opción y justificadla.
+- a) Llegar a la meta evitando las trampas
+- b) Visitar todas las celdas de la rejilla una sola vez
+- c) Llegar a la meta en el mínimo número de pasos
+- d) Quedarse en la salida y no moverse
 
-**Question 2**: In the 5x5 grid world setup, identify the correct configuration:
-- Start position: ________________________________
-- Goal position: ________________________________
-- Goal reward: ________________________________
-- Trap positions: ________________________________
-- Step cost: ________________________________
+**Pregunta 2**: Completad la configuración de la rejilla 5×5:
+- Posición de salida: ________________________________
+- Posición de la meta: ________________________________
+- Recompensa de la meta: ________________________________
+- Posiciones de las trampas: ________________________________
+- Coste por paso: ________________________________
 
-**Question 3**: What does the Q-value Q(s,a) represent in Q-learning?
-- a) The immediate reward for taking action a in state s
-- b) The expected cumulative reward for taking action a in state s and following the optimal policy thereafter
-- c) The probability of taking action a in state s
-- d) The number of times action a has been taken in state s
+**Pregunta 3**: ¿Qué representa el valor Q(s,a) en Q-learning? Elegid una opción y justificadla.
+- a) La recompensa inmediata por tomar la acción a en el estado s
+- b) La recompensa acumulada esperada por tomar la acción a en el estado s y seguir después la política óptima
+- c) La probabilidad de tomar la acción a en el estado s
+- d) El número de veces que se ha tomado la acción a en el estado s
 
-**Question 4**: What are the four possible actions available to the robot in the grid world?
+**Pregunta 4**: ¿Cuáles son las cuatro acciones posibles del robot?
 1. ________________________________
 2. ________________________________
 3. ________________________________
 4. ________________________________
 
-### 1.2 Basic Q-Learning Mechanics
+### 1.2 Mecánica básica del Q-learning
 
-**Question 5**: What happens when the robot tries to move outside the grid boundaries?
+**Pregunta 5**: ¿Qué pasa cuando el robot intenta salirse de la rejilla? Buscad en las **actualizaciones de Q** que imprime vuestro notebook un ejemplo de esta situación y copiadlo (estado, acción, recompensa, Q antes y después).
 
-_Your answer:_
+_Vuestra respuesta:_
 _______________________________________________________________________________
 _______________________________________________________________________________
 
 ---
 
-## Section 2: Q-Learning Algorithm
+## Sección 2: El algoritmo de Q-learning
 
-### 2.1 Mathematical Foundations
+### 2.1 Fundamentos matemáticos
 
-**Question 6**: Complete the Q-learning update rule equation:
+**Pregunta 6**: Completad la regla de actualización del Q-learning:
 
 Q(s, a) ← Q(s, a) + α [________________________________]
 
-Where:
+Donde:
 - s: ________________________________
 - a: ________________________________
 - α: ________________________________
 - γ: ________________________________
 - r: ________________________________
 
-**Question 7**: Explain the role of each hyperparameter in Q-learning:
+**Pregunta 7**: Explicad con vuestras palabras el papel de cada hiperparámetro:
 
-**Learning rate (α = 0.1):**
+**Tasa de aprendizaje (α = 0.1):**
 _______________________________________________________________________________
 
-**Discount factor (γ = 0.9):**
+**Factor de descuento (γ = 0.9):**
 _______________________________________________________________________________
 
-**Initial epsilon (ε = 1.0):**
+**ε inicial (ε = 1.0):**
 _______________________________________________________________________________
 
-### 2.2 Training Process
+### 2.2 El proceso de entrenamiento
 
-**Question 8**: Describe the four main steps of the Q-learning training loop in order:
+**Pregunta 8**: Describid en orden los cuatro pasos principales del bucle de entrenamiento:
 1. ________________________________
 2. ________________________________
 3. ________________________________
 4. ________________________________
 
-**Question 9**: What is the epsilon-greedy policy and why is it important?
+**Pregunta 9**: ¿Qué es la política ε-greedy y por qué es importante?
 
-_Definition:_
+_Definición:_
 _______________________________________________________________________________
 
-_Importance:_
-_______________________________________________________________________________
-
----
-
-## Section 3: Exploration vs Exploitation
-
-### 3.1 Strategy Understanding
-
-**Question 10**: If epsilon = 0.2, what percentage of the time will the agent:
-- Explore (random action): ________________________________%
-- Exploit (best known action): ________________________________%
-
-**Question 11**: Why does epsilon typically decay during training?
-
-_Your answer:_
-_______________________________________________________________________________
-_______________________________________________________________________________
-
-**Question 12**: What would happen if we set:
-- **Learning rate α = 0** : ________________________________
-- **Discount factor γ = 0** : ________________________________
-
-### 3.2 Performance Analysis
-
-**Question 13**: Why might the success rate be low in early episodes but improve over time?
-
-_Your answer:_
-_______________________________________________________________________________
+_Importancia:_
 _______________________________________________________________________________
 
 ---
 
-## Section 4: Training Process and Results
+## Sección 3: Exploración frente a explotación
 
-### 4.1 Performance Monitoring
+### 3.1 La estrategia
 
-**Question 14**: What information is tracked during training to monitor the agent's performance?
+**Pregunta 10**: Si ε = 0.2, ¿qué porcentaje del tiempo el agente…
+- explora (acción aleatoria): ________________________________ %
+- explota (mejor acción conocida): ________________________________ %
 
-List at least 4 metrics:
-1. ________________________________
-2. ________________________________
-3. ________________________________
-4. ________________________________
+**Pregunta 11**: ¿Por qué ε suele ir bajando durante el entrenamiento?
 
-**Question 15**: What does it mean when the Q-values "converge" during training?
-
-_Your answer:_
+_Vuestra respuesta:_
 _______________________________________________________________________________
 _______________________________________________________________________________
 
-### 4.2 Critical Analysis
+**Pregunta 12**: ¿Qué pasaría si ponemos…? Comprobadlo en el **laboratorio** y contad lo que habéis visto.
+- **Tasa de aprendizaje α = 0** (o casi, 0.01): ________________________________
+- **Factor de descuento γ = 0**: ________________________________
 
-**Question 16**: You observe during training that:
-- Episode rewards increase steadily for 200 episodes then plateau
-- Success rate reaches 85% by episode 150
-- Q-values for optimal state-action pairs stabilize around episode 180
-- Epsilon has decayed from 1.0 to 0.1
+### 3.2 Análisis del rendimiento
 
-Analyze this scenario and explain what this indicates about the learning process:
+**Pregunta 13**: En la **animación del entrenamiento**, describid qué hace el robot en el episodio 1, en el 60 y en el 1000. ¿Desde dónde empiezan a «propagarse» los valores Q positivos en el mapa de la derecha y por qué?
 
-_Your analysis:_
+_Vuestra respuesta:_
+_______________________________________________________________________________
+_______________________________________________________________________________
+
+---
+
+## Sección 4: Proceso de entrenamiento y resultados
+
+### 4.1 Seguimiento del rendimiento
+
+**Pregunta 14**: ¿Qué información se registra durante el entrenamiento para seguir el rendimiento del agente? Citad al menos 4 métricas y copiad el valor final de **vuestra** ejecución:
+
+| Métrica | Valor final (vuestro) |
+|---|---|
+| | |
+| | |
+| | |
+| | |
+
+**Pregunta 15**: ¿Qué significa que los valores Q «convergen» durante el entrenamiento? Usad la tabla de evolución de Q del estado (2, 2) de vuestro notebook como ejemplo.
+
+_Vuestra respuesta:_
+_______________________________________________________________________________
+_______________________________________________________________________________
+
+### 4.2 Análisis crítico
+
+**Pregunta 16**: Durante un entrenamiento observáis que:
+- La recompensa por episodio sube durante 200 episodios y luego se estanca
+- La tasa de éxito llega al 85 % hacia el episodio 150
+- Los valores Q de los pares estado-acción óptimos se estabilizan hacia el episodio 180
+- ε ha bajado de 1.0 a 0.1
+
+Analizad la situación y explicad qué indica sobre el proceso de aprendizaje:
+
+_Vuestro análisis:_
 _______________________________________________________________________________
 _______________________________________________________________________________
 _______________________________________________________________________________
 
 ---
+
+## Sección 5: Vuestros experimentos (laboratorio)
+
+**Pregunta 17**: Copiad la tabla del **barrido α × γ** de vuestro notebook (episodio en que se alcanza un 90 % de éxito). ¿Qué combinación aprende antes? ¿Hay alguna que no llegue nunca? Explicad por qué.
+
+_Vuestra respuesta:_
+_______________________________________________________________________________
+_______________________________________________________________________________
+
+**Pregunta 18**: En el laboratorio, poned la **recompensa por paso** a 0 y después a +1 (con el resto por defecto). ¿Qué hace la política final en cada caso? ¿Qué os enseña esto sobre el diseño de la recompensa en un problema industrial?
+
+_Con 0:_ ________________________________
+
+_Con +1:_ ________________________________
+
+_Conclusión:_ _______________________________________________________________________________

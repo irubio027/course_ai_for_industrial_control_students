@@ -66,19 +66,17 @@ _______________________________________________________________________________
 
 ### 2.2 Network Structure
 
-**Question 7**: In the DQN implementation, what is the typical neural network architecture used?
+**Question 7**: In the DQN implementation of this notebook (see the printed `DQN(...)` summary), what architecture is used? How many trainable parameters does it have?
 - Input layer size: ________________________________
 - Hidden layers: ________________________________
 - Output layer size: ________________________________
+- Total parameters: ________________________________
 
 **Question 8**: What activation function is used in the hidden layers of the DQN, and why?
 
 _Activation function:_ ________________________________
 
-_Reason:_ _______________________________________________________________________________
-
----
-
+_Reason (compare with the action counts printed by `analyze_agent_behavior`):_ _______________________________________________________________________________
 ## Section 3: Training Components
 
 ### 3.1 Experience Replay
@@ -102,12 +100,17 @@ List the 4 main steps in order:
 
 ### 3.2 Loss Function and Updates
 
-**Question 11**: Complete the DQN loss function equation:
+**Question 11**: Complete the loss function used in this notebook:
 
-Loss = MSE(________________________________, ________________________________)
+Loss = Huber (smooth L1)(________________________________, ________________________________)
 
-Where the target is calculated as:
-Target = r + γ × ________________________________
+Where the (Double DQN) target is calculated as:
+Target = r + γ × (1 − terminated) × ________________________________
+
+Why does the notebook use the Huber loss and gradient clipping (`clip_grad_norm_`, max norm 10) instead of a plain MSE?
+
+_Your answer:_
+_______________________________________________________________________________
 
 **Question 12**: Why is the target network updated less frequently than the main Q-network?
 
@@ -140,7 +143,7 @@ _Criterion:_ ___________________________________________________________________
 
 ### 4.2 Advanced Analysis
 
-**Question 16**: What is the main improvement that Double DQN provides over standard DQN?
+**Question 16**: The agent of this notebook uses Double DQN by default (`double=True`). What is the main improvement that Double DQN provides over standard DQN? Which network *chooses* the next action and which one *evaluates* it?
 
 _Your answer:_
 _______________________________________________________________________________
@@ -149,6 +152,38 @@ _______________________________________________________________________________
 
 _Most frequent action:_ ________________________________
 
-_Reason:_ _______________________________________________________________________________
+_Reason (compare with the action counts printed by `analyze_agent_behavior`):_ _______________________________________________________________________________
 
 ---
+
+## Section 5: Your Results vs. the Pre-trained Network
+
+**Question 18**: Fill in the table with the results of **your** run (cells *Training* and *Testing*):
+
+| | Your network | Pre-trained network |
+|---|---|---|
+| Training episodes / time | ______ / ______ s | (given) |
+| Mean test score (10 episodes) | ______ | ______ |
+| Success rate (score ≥ 200) | ______ | ______ |
+
+Describe the *BEFORE* (random agent) and *AFTER* animations in one or two sentences each. What does the trained lander do differently?
+
+_Your answer:_
+_______________________________________________________________________________
+
+**Question 19**: The replay buffer stores `terminated` (crash or landing) as the end of the episode, but **not** `truncated` (time limit of 1000 steps). Why would it be wrong to treat a time-out as a terminal state in the target?
+
+_Your answer:_
+_______________________________________________________________________________
+
+**Question 20**: During training the notebook prints both the "Avg Score (100)" (with exploration) and a periodic "Greedy eval" (ε = 0), and keeps the best network found. Why can the two numbers differ so much, and why is it useful to keep the best network instead of the last one?
+
+_Your answer:_
+_______________________________________________________________________________
+
+**Question 21**: Use the *Try it yourself* cell (`pilot(...)`) with several seeds. Find a seed where an agent lands badly (or crashes) and explain what you think went wrong (initial push, terrain, angle…).
+
+_Seed and agent:_ ________________________________
+
+_Explanation:_ _______________________________________________________________________________
+
