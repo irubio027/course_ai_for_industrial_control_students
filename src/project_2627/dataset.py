@@ -111,7 +111,7 @@ class HieroglyphsDataset(Dataset):
         self.class_to_idx = {name: index for index, name in enumerate(self.class_names)}
         self.class_counts = {name: len(class_files[name]) for name in self.class_names}
         self.transform = transform or transforms.Compose(
-            [transforms.Resize((64, 64)), transforms.ToTensor()]
+            [transforms.Resize((64, 64)),transforms.Lambda(lambda img: transforms.functional.invert(img)), transforms.ToTensor()]
         )
 
         samples_by_class = defaultdict(list)
