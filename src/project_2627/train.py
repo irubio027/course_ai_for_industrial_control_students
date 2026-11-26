@@ -54,6 +54,7 @@ def train_model(
         batch_size=batch_size,
         shuffle=True,
         generator=generator,
+        
     )
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 

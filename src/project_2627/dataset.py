@@ -203,6 +203,8 @@ if __name__ == "__main__":
     val_dataset = datasets["val"]
     test_dataset = datasets["test"]
 
+
+    train_dataset[0]
     print(f"Retained classes: {len(train_dataset.class_names)}")
     print(f"Class mapping: {train_dataset.class_to_idx}")
     print(
